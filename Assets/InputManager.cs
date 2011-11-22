@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour {
 	private static InputManager instance;
 	public Queue keyQueue;
 	public string test;
+	public float num_input;
 	
 	public static InputManager get{
 		get{
@@ -26,6 +27,7 @@ public class InputManager : MonoBehaviour {
 	void Awake(){
 		instance = this;
 		keyQueue = new Queue();
+		num_input = 0;
 	}
 	
 	// Use this for initialization
@@ -44,6 +46,9 @@ public class InputManager : MonoBehaviour {
 				test = key;
 			}
 		}
+		
+		if(Input.GetButtonDown("blue") && Input.GetButtonDown("yellow"))
+			num_input = Time.time;
 	}
 	
 	public key_pair GetNextKey(){

@@ -4,11 +4,15 @@ using System.Collections.Generic;
 
 public class combo_master : MonoBehaviour {
 	private static combo_master instance;
-		
+	public bool test_combo;
+	public string seen;
+	public int test_count;
+	
 	public Queue output_queue;
 	public List <key_pair> combo_interpreter;
 	private float combo_timer;
 	private float simul_timer;
+	private InputManager input;
 	
 	private static string[] red_combo = {"blue", "combo", "blue", "combo", "blue", "combo"};
 	private static string[] blue_combo = {"blue", "blue", "blue", "blue", "blue", "blue"};
@@ -36,12 +40,17 @@ public class combo_master : MonoBehaviour {
 	//register combos
 	public void handle_combos(){
 		key_pair key;
-		if(InputManager.get.HasKeys()){
+		seen = "";
+		
+		while(InputManager.get.HasKeys()){
 			key = InputManager.get.GetNextKey();
-			if(key.name == "green" || key.name == "red" || key.name == "foot_pedal")
+			if(key.name == "green" || key.name == "red" || key.name == "foot_pedal"){
 				output_queue.Enqueue(key.name);
-			else if(key.name == "blue" || key.name == "yellow")
+			}
+			else if(key.name == "blue" || key.name == "yellow"){
 				combo_interpreter.Add(key);
+				seen += key.name;
+			}
 		}
 	}
 	
