@@ -7,6 +7,7 @@ public class combo_master : MonoBehaviour {
 	public bool test_combo;
 	public string seen;
 	public int test_count;
+	public int combo_count;
 	
 	public Queue output_queue;
 	public List <key_pair> combo_interpreter;
@@ -58,13 +59,14 @@ public class combo_master : MonoBehaviour {
 	public List <key_pair> clean_list(){
 		List <key_pair> temp = new List <key_pair>();
 		float cutofftime = Time.time - combo_timer;
+		test_count = combo_interpreter.Count;
 		
 		for(int i = 0; i<combo_interpreter.Count; i++){
 			//forget about input too old to be part of current combo
 			if(combo_interpreter[i].time > cutofftime){
 				//check to see if the next one is simultaneous with this one
 				if(i<combo_interpreter.Count-1){
-					if(combo_interpreter[i+1].time - combo_interpreter[i].time < simul_timer){
+					if(combo_interpreter[i+1].time == combo_interpreter[i].time){// < simul_timer){
 						//it was simultaneous, create a combo hit for it
 						key_pair combo;
 						combo.name = "combo";
@@ -72,6 +74,7 @@ public class combo_master : MonoBehaviour {
 						temp.Add(combo);
 						//skip over the next thing, as we've already consumed it
 						i++;
+						combo_count++;
 					}
 					else
 						temp.Add(combo_interpreter[i]);
@@ -141,7 +144,7 @@ public class combo_master : MonoBehaviour {
 		if(temp.Count >= 3){
 			int offset = 0;
 			for(int i = 0; i< temp.Count-3; i++){
-				for(int x = i; x<i+3; x++){
+				for(int x = i; x<i+2; x++){
 					//check to see if we have a contiguous combo
 					if(temp[x].name == yellow_combo[offset])
 						offset++;
@@ -168,8 +171,9 @@ public class combo_master : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		simul_timer = 2;
+		simul_timer = 1;
 		combo_timer = 7;
+		combo_count = 0;
 		
 	}
 	
