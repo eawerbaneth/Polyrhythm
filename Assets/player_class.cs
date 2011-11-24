@@ -12,9 +12,11 @@ using System.Collections;
 public class player_class : MonoBehaviour {
 	
 	public int lane;
-	private combo_master controller;
+	private combo_master input_feed;
 	public string color;
 	public float cooldown;
+	private CharacterController controller;
+	public Vector3 test;
 
 	
 	public void receive_input(){
@@ -23,15 +25,15 @@ public class player_class : MonoBehaviour {
 		if(cooldown  < 0)
 			cooldown = 0;
 		
-		controller = GetComponent<combo_master>();
-		Queue input = controller.output_queue;
+		input_feed = GetComponent<combo_master>();
+		Queue input = input_feed.output_queue;
 		
 		foreach(string key in input){
 			if(key == "green")
 				change_lane(true);
 			else if (key == "red")
 				change_lane(false);
-			//TODO: register color change here
+			//TODO: ADD ANIMATIONS FOR COLOR CHANGE
 			else if (key == "red_combo"){
 				color = "red";
 				cooldown = 3;
@@ -47,7 +49,7 @@ public class player_class : MonoBehaviour {
 		}
 		
 		//clear out output
-		controller.empty_output();
+		input_feed.empty_output();
 		
 		//reset the cooldown
 		if(cooldown == 0)
@@ -57,17 +59,24 @@ public class player_class : MonoBehaviour {
 	
 	//change lanes: true is up, false is down
 	public void change_lane(bool direction){
-		Vector3 trans_coords = new Vector3(transform.position.x,
-		       transform.position.y, transform.position.z);
+		//NEED TO ADD ANIMATIONS IN HERE
+		
+		//Vector3 move_coords = new Vector3(0, 0, 0);
+		Vector3 trans_coords = transform.forward;
+		test = trans_coords;
+		
+		//Vector3 trans_coords = new Vector3(transform.position.x,
+		//       transform.position.y, transform.position.z);
 		
 		if(direction && lane < 2){
 			lane++;
-			trans_coords.z += 1;
+			//trans_coords.z += 1;
+			trans_coords = -trans_coords;
 			transform.Translate(trans_coords);
 		}
 		else if(!direction && lane > 0){
 			lane--;
-			trans_coords.z -= 1;
+			//trans_coords.z -= 1;
 			transform.Translate(trans_coords);
 		}
 		

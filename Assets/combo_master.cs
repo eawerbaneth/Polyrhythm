@@ -66,7 +66,7 @@ public class combo_master : MonoBehaviour {
 			if(combo_interpreter[i].time > cutofftime){
 				//check to see if the next one is simultaneous with this one
 				if(i<combo_interpreter.Count-1){
-					if(combo_interpreter[i+1].time == combo_interpreter[i].time){// < simul_timer){
+					if(combo_interpreter[i+1].time - combo_interpreter[i].time <= simul_timer){
 						//it was simultaneous, create a combo hit for it
 						key_pair combo;
 						combo.name = "combo";
@@ -171,7 +171,7 @@ public class combo_master : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		simul_timer = 1;
+		simul_timer = 0;
 		combo_timer = 7;
 		combo_count = 0;
 		
