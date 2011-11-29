@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 
-Project("{22794641-F02C-4854-29F8-F87B5775F31C}") = "polyrhythm", "Assembly-CSharp-vs.csproj", "{5E7E7EA9-151A-98A2-484B-50E2D9DD3473}"
+Project("{2272826D-73EB-8CEF-C181-BB7B9225B236}") = "Polyrhythm", "Assembly-CSharp-vs.csproj", "{25B21A76-02C4-3261-74C9-29FB6AF39446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5E7E7EA9-151A-98A2-484B-50E2D9DD3473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E7E7EA9-151A-98A2-484B-50E2D9DD3473}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E7E7EA9-151A-98A2-484B-50E2D9DD3473}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E7E7EA9-151A-98A2-484B-50E2D9DD3473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25B21A76-02C4-3261-74C9-29FB6AF39446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25B21A76-02C4-3261-74C9-29FB6AF39446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25B21A76-02C4-3261-74C9-29FB6AF39446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25B21A76-02C4-3261-74C9-29FB6AF39446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
