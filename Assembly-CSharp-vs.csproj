@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\GUIScript.cs" />
      <Compile Include="Assets\InputManager.cs" />
+     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\combo_master.cs" />
      <Compile Include="Assets\player_class.cs" />
      <Compile Include="Assets\roadscript.cs" />
