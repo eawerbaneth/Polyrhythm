@@ -92,7 +92,6 @@ public class player_class : MonoBehaviour {
 	public void change_lane(bool direction){
 		//NEED TO ADD ANIMATIONS IN HERE
 		
-		//Vector3 move_coords = new Vector3(0, 0, 0);
 		Vector3 trans_coords = transform.forward;
 		trans_coords.z = 0.15f;
 		
@@ -115,15 +114,10 @@ public class player_class : MonoBehaviour {
 		feet = new List<string>();
 		player = GameObject.Find("player_prefab");
 		
-		/*
 		red_tex = Resources.Load("red") as Texture;
 		blue_tex = Resources.Load("blue") as Texture;
 		white_tex = Resources.Load("white") as Texture;
 		yellow_tex = Resources.Load("yellow") as Texture;
-		*/
-		//red_color = Resources.Load("red") as Color;
-		//white_color = Resources.Load("white") as Color;
-
 		
 	}
 	

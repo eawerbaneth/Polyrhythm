@@ -45,7 +45,7 @@ public class combo_master : MonoBehaviour {
 		
 		while(InputManager.get.HasKeys()){
 			key = InputManager.get.GetNextKey();
-			if(key.name == "green" || key.name == "red" || key.name == "foot_pedal"){
+			if(key.name == "green" || key.name == "red"){ //|| key.name == "foot_pedal"){
 				output_queue.Enqueue(key.name);
 			}
 			else if(key.name == "blue" || key.name == "yellow"){
@@ -113,7 +113,11 @@ public class combo_master : MonoBehaviour {
 					//if we did, add the combo to our output queue
 					output_queue.Enqueue("red_combo");
 					//clear the combo from our combination interpreter
+					Debug.Log("Red: Count is: " + temp.Count + " i is: " + i);
 					temp.RemoveRange(i, i+5);
+					offset = 0;
+					break;
+					
 				}
 			}
 		}
@@ -136,7 +140,10 @@ public class combo_master : MonoBehaviour {
 					//if we did, add the combo to our output queue
 					output_queue.Enqueue("blue_combo");
 					//clear the combo from our combination interpreter
+					Debug.Log("Blue: Count is: " + temp.Count + " i is: " + i);
 					temp.RemoveRange(i, i+5);
+					offset = 0;
+					break;
 				}
 			}
 				
@@ -160,7 +167,10 @@ public class combo_master : MonoBehaviour {
 					//if we did, add the combo to our output queue
 					output_queue.Enqueue("yellow_combo");
 					//clear the combo from our combination interpreter
+					Debug.Log("Yellow: Count is: " + temp.Count + " i is: " + i);
 					temp.RemoveRange(i, i+2);
+					offset = 0;
+					break;
 				}
 			}
 			
