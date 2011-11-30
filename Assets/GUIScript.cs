@@ -2,71 +2,123 @@ using UnityEngine;
 using System.Collections;
 
 public class GUIScript : MonoBehaviour {
-    public Rect lifeBarRect;
-    public Rect lifeBarBackgroundRect;
-    public Rect glimmerRect;
-    public Texture2D greensquare;
-    public Texture2D redsquare;
+    private Rect barBackgroundRect;
+    private Rect barRect;
+    private Rect capRect;
+    private Rect glimmerRect;
+    public Rect toleranceBarRect;
+    
+    public Texture2D barBackgroundTexture;
+    public Texture2D barTexture;
+    public Texture2D capTexture;
     public Texture2D glimmerTexture;
-    private static GUIScript instance;
+    public Texture2D toleranceBarTexture;
+    public Texture2D toleranceLeftTexture;
+    public Texture2D toleranceRightTexture;
     
     public float value = 50.0f;
-    private float LifeBarWidth;
-    private float LifeBarHeight;
+    private float barWidth;
+    private float barHeight;
     
-    public float space_gain;
-    public float static_drain;
+    private float space_gain = 6;
     
     public float height_ratio;
     public float from_bottom_gap;
     public float beats_per_second;
-    public float counter = 0;
+    public float tolerance;
     
     private float glimmer_start_time = 0;
     private float glimmer_counter = 0;
     private float glimmer_active_time = 0;
-    
+    private float inside_bar_ratio = 6.6f / 8.0f;
+    private float inside_bar_y_push = 1.5f / 16.0f;
+    public float tolerance_increase_ratio;
 
     // Use this for initialization
     void Start(){
         Application.targetFrameRate = 60;
-        instance = this;
-        this.LifeBarWidth = Screen.width;
-        this.LifeBarHeight = Screen.height * this.height_ratio;
-        this.lifeBarRect.height = this.LifeBarHeight;
-        this.lifeBarBackgroundRect.height = this.LifeBarHeight;
-        this.lifeBarBackgroundRect.width = LifeBarWidth;
-        this.lifeBarBackgroundRect.y = Screen.height - (Screen.height * this.height_ratio)
-                                                     - from_bottom_gap;
-        this.lifeBarRect.y = Screen.height - (Screen.height * this.height_ratio)
-                                           - from_bottom_gap;
-        this.glimmerRect.width = LifeBarWidth;
-        this.glimmerRect.height = LifeBarHeight * 1.2f;
+        this.tolerance_increase_ratio = ((this.barBackgroundTexture.height + 16) * 1.0f) / (this.barBackgroundTexture.height * 1.0f);
+        
+        this.barWidth = Screen.width;
+        this.barHeight = Screen.height * this.height_ratio;
+        
+        this.barBackgroundRect.height = this.barHeight;
+        this.barBackgroundRect.width = this.barWidth;
+        this.barBackgroundRect.y = Screen.height - (Screen.height * this.height_ratio)
+                                                 - from_bottom_gap;
+                                                     
+        this.toleranceBarRect.height = this.barHeight * this.tolerance_increase_ratio;   
+        this.toleranceBarRect.width = this.toleranceBarTexture.width * this.tolerance_increase_ratio; 
+        this.toleranceBarRect.y = this.barBackgroundRect.y - ((this.toleranceBarRect.height - this.barBackgroundRect.height)/2);
+        this.toleranceBarRect.x = Screen.width * (this.value / 100);
+                                                     
+        this.barRect.height = this.barHeight * this.inside_bar_ratio;
+        this.barRect.y = Screen.height - (Screen.height * this.height_ratio)
+                                       - from_bottom_gap
+                                       + (inside_bar_y_push * this.barHeight);
+    
+        float ratio = this.barHeight / capTexture.height;
+        this.capRect.width = capTexture.width * ratio;
+        this.capRect.height = capTexture.height * ratio * this.inside_bar_ratio;
+        this.capRect.y = Screen.height - (Screen.height * this.height_ratio)
+                                       - from_bottom_gap
+                                       + (inside_bar_y_push * this.barHeight);
+        
+                                           
+        this.glimmerRect.width = barWidth;
+        this.glimmerRect.height = barHeight * 1.2f;
         this.glimmerRect.y =  Screen.height - (Screen.height * this.height_ratio)
                                             - from_bottom_gap
-                                            - (LifeBarHeight * 0.1f);
+                                            - (barHeight * 0.1f);
     }
     
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")){
             this.value = this.value + this.space_gain;
+            //this.beats_per_second += 0.1f;
+        }
             
         this.value = this.value - ((Time.deltaTime * this.space_gain) * beats_per_second);            
-        this.lifeBarRect.width = LifeBarWidth * (this.value / 100);
+        this.barRect.width = barWidth * (this.value / 100) - this.capTexture.width + 1;
+        this.capRect.x = this.barRect.width - 1;
         
         this.glimmer_counter = 1.0f / beats_per_second;
         this.glimmer_active_time = glimmer_counter * 0.4f;
         
         if(Time.time >= this.glimmer_counter + this.glimmer_start_time)
             this.glimmer_start_time = Time.time;
-    
     }
+    
+    // OnGUI is called multiple times per frame (about 4 times)
     void OnGUI() {
-        if(Time.time < this.glimmer_start_time + this.glimmer_active_time)
-            GUI.DrawTexture(glimmerRect, glimmerTexture);
+        //if(Time.time < this.glimmer_start_time + this.glimmer_active_time)
+        //    GUI.DrawTexture(glimmerRect, glimmerTexture);
+                
+        GUI.DrawTexture(barBackgroundRect, barBackgroundTexture);
         
-        GUI.DrawTexture(lifeBarBackgroundRect, redsquare);
-        GUI.DrawTexture(lifeBarRect, greensquare);
+        GUI.DrawTexture(capRect, capTexture);
+        GUI.DrawTexture(barRect, barTexture);
+        
+        
+        float tolerance_length = this.barWidth * ((this.tolerance * 4) / 100);
+        int num_dots = ((int)(tolerance_length / this.toleranceBarRect.width));
+        float start_tolerance = ((50.0f - this.tolerance)/100) * Screen.width;
+        for(int i=0; i < num_dots; i++) {
+            if(i == 0){
+                this.toleranceBarRect.x = start_tolerance + i * this.toleranceBarRect.width;
+                this.toleranceBarRect.width = this.toleranceLeftTexture.width * this.tolerance_increase_ratio; 
+                GUI.DrawTexture(toleranceBarRect, toleranceLeftTexture);
+            } else if(i == num_dots - 1){
+                this.toleranceBarRect.x = start_tolerance + i * this.toleranceBarRect.width;
+                this.toleranceBarRect.width = this.toleranceRightTexture.width * this.tolerance_increase_ratio; 
+                GUI.DrawTexture(toleranceBarRect, toleranceRightTexture);
+            } else {    
+                this.toleranceBarRect.x = start_tolerance + i * this.toleranceBarRect.width;
+                this.toleranceBarRect.width = this.toleranceBarTexture.width * this.tolerance_increase_ratio; 
+                GUI.DrawTexture(toleranceBarRect, toleranceBarTexture);
+            }
+        }
+        
     }
 }
