@@ -19,6 +19,7 @@ public class player_class : MonoBehaviour {
 	private CharacterController controller;
 	public List <string> feet;
 	public GameObject player;
+	public GameObject bino;
 	
 	//textures	
 	public Texture red_tex ;
@@ -119,6 +120,13 @@ public class player_class : MonoBehaviour {
 		white_tex = Resources.Load("white") as Texture;
 		yellow_tex = Resources.Load("yellow") as Texture;
 		
+		bino = GameObject.Find("bino");
+		bino.animation.Stop();
+		bino.animation.Play("running");
+		bino.animation["running"].speed = 1.6f;
+		
+		
+		bino.animation.wrapMode = WrapMode.Loop;
 	}
 	
 	
