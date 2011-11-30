@@ -1,9 +1,9 @@
 fileFormatVersion: 1
-guid: bb861194217a6ef46b2e9359b8671199
+guid: 8468b392137ec99479bb225940637a73
 ModelImporter:
   importerVersion: 7
   meshes:
-    scaleFactor: 1
+    scaleFactor: 0.01
     useFileUnits: 1
     meshCompression: 0
     generateColliders: 0
@@ -21,13 +21,20 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+  nodeInfo:
+    group20_polySurface1SmoothProxyGroup:
+    - 100000
+    - 400000
+    //RootNode:
+    - 100002
+    - 400002
+    - 11100000
+    polySurface2:
+    - 100004
+    - 400004
+    - 3300000
+    - 2300000
 AssetImporter:
   importerVersion: 1
   fileIDToRecycleName:
-    4300000: torso
-    4300002: leftleg
-    4300004: rightleg
-    4300006: rightarm
-    4300008: leftarm
-    4300010: head
-    7400000: Take 001 //// bino@jumping
+    4300000: polySurface2
