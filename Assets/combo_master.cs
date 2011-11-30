@@ -116,9 +116,10 @@ public class combo_master : MonoBehaviour {
 					temp.RemoveRange(i, i+5);
 				}
 			}
-			
+		}
+		if(temp.Count >= 6){
 			//blue
-			offset = 0;
+			int offset = 0;
 			for(int i = 0; i< temp.Count-6; i++){
 				for(int x = i; x<i+6; x++){
 					//check to see if we have a contiguous combo
