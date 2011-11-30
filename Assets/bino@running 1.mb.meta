@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: 193a59494b7ad6249be61aa0a665f003
+guid: 62e293db1814d4a449bb030891c6866f
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -21,6 +21,7 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+<<<<<<< HEAD
   nodeInfo:
     head:
     - 100000
@@ -141,3 +142,5 @@ AssetImporter:
     4300008: leftarm
     4300010: head
     7400000: Take 001 //// bino@running 1
+=======
+>>>>>>> b6d1fb8316ee5e47219a133c96ccbfc67b772799

@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: 1152fda417d74484a9a4f10f18158143
+guid: 77840b5e8fedd4942b21ee520af21451
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -21,6 +21,7 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+<<<<<<< HEAD
   nodeInfo:
     skeloten:
     - 100000
@@ -141,3 +142,5 @@ AssetImporter:
     4300008: leftarm
     4300010: head
     7400000: Take 001 //// animation_binorunning
+=======
+>>>>>>> b6d1fb8316ee5e47219a133c96ccbfc67b772799
