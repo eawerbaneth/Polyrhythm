@@ -57,7 +57,6 @@ public class player_class : MonoBehaviour {
 				change_lane(true);
 			else if (key == "red")
 				change_lane(false);
-			//TODO: do something with foot pedal
 			else if (key == "foot_pedal")
 				feet.Add(key);
 			//TODO: ADD ANIMATIONS FOR COLOR CHANGE
@@ -95,13 +94,10 @@ public class player_class : MonoBehaviour {
 		
 		//Vector3 move_coords = new Vector3(0, 0, 0);
 		Vector3 trans_coords = transform.forward;
-		
-		//Vector3 trans_coords = new Vector3(transform.position.x,
-		//       transform.position.y, transform.position.z);
+		trans_coords.z = 0.15f;
 		
 		if(direction && lane < 2){
 			lane++;
-			//trans_coords.z += 1;
 			transform.Translate(trans_coords);
 		}
 		else if(!direction && lane > 0){
