@@ -1,5 +1,5 @@
 fileFormatVersion: 1
-guid: 62e293db1814d4a449bb030891c6866f
+guid: 77f6e361dff83ae42bf19f7f01f02749
 ModelImporter:
   importerVersion: 7
   meshes:
@@ -21,117 +21,116 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
-<<<<<<< HEAD
   nodeInfo:
-    head:
+    skeloten:
     - 100000
     - 400000
-    - 13700000
-    binohead:
+    Rhip:
     - 100002
     - 400002
-    rightarm:
+    Lankle:
     - 100004
     - 400004
-    - 13700002
-    rightleg:
+    Binobody:
     - 100006
     - 400006
-    - 13700004
-    leftarm:
+    rightarm:
     - 100008
     - 400008
-    - 13700006
-    leftleg:
+    - 13700000
+    Rknee:
     - 100010
     - 400010
-    - 13700008
-    torso:
+    head:
     - 100012
     - 400012
-    - 13700010
-    Binobody:
+    - 13700002
+    Relbow:
     - 100014
     - 400014
-    pasted__group20:
+    headball:
     - 100016
     - 400016
-    Rankle:
+    Lelbow:
     - 100018
     - 400018
-    Rknee:
+    headarmsspine:
     - 100020
     - 400020
-    Rhip:
+    Rwrist:
     - 100022
     - 400022
-    headball:
+    Rshoulder:
     - 100024
     - 400024
-    head 1:
+    Rankle:
     - 100026
     - 400026
-    Rwrist:
+    binohead:
     - 100028
     - 400028
-    Lankle:
+    head 1:
     - 100030
     - 400030
-    Lknee:
+    Lshoulder:
     - 100032
     - 400032
-    Lhip:
+    headarms:
     - 100034
     - 400034
-    Relbow:
+    headarmsspine 1:
     - 100036
     - 400036
-    Rshoulder:
+    Lhip:
     - 100038
     - 400038
-    ikHandle3:
+    torso:
     - 100040
     - 400040
-    ikHandle2:
+    - 13700004
+    Lknee:
     - 100042
     - 400042
     ikHandle1:
     - 100044
     - 400044
-    group:
+    ikHandle2:
     - 100046
     - 400046
-    ikHandle5:
+    ikHandle4:
     - 100048
     - 400048
-    ikHandle4:
+    //RootNode:
     - 100050
     - 400050
-    headarmsspine 1:
+    - 11100000
+    pasted__group20:
     - 100052
     - 400052
-    headarms:
+    group:
     - 100054
     - 400054
-    Lshoulder:
+    ikHandle5:
     - 100056
     - 400056
-    Lelbow:
+    leftleg:
     - 100058
     - 400058
-    Lwrist:
+    - 13700006
+    rightleg:
     - 100060
     - 400060
-    headarmsspine:
+    - 13700008
+    ikHandle3:
     - 100062
     - 400062
-    skeloten:
+    Lwrist:
     - 100064
     - 400064
-    //RootNode:
+    leftarm:
     - 100066
     - 400066
-    - 11100000
+    - 13700010
 AssetImporter:
   importerVersion: 1
   fileIDToRecycleName:
@@ -141,6 +140,3 @@ AssetImporter:
     4300006: rightarm
     4300008: leftarm
     4300010: head
-    7400000: Take 001 //// bino@running 1
-=======
->>>>>>> b6d1fb8316ee5e47219a133c96ccbfc67b772799
