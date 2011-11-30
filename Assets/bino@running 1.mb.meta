@@ -21,3 +21,123 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+  nodeInfo:
+    Rhip:
+    - 100000
+    - 400000
+    ikHandle1:
+    - 100002
+    - 400002
+    Rknee:
+    - 100004
+    - 400004
+    ikHandle3:
+    - 100006
+    - 400006
+    Lankle:
+    - 100008
+    - 400008
+    ikHandle4:
+    - 100010
+    - 400010
+    Lknee:
+    - 100012
+    - 400012
+    Rankle:
+    - 100014
+    - 400014
+    headarms:
+    - 100016
+    - 400016
+    headarmsspine 1:
+    - 100018
+    - 400018
+    headarmsspine:
+    - 100020
+    - 400020
+    Lelbow:
+    - 100022
+    - 400022
+    Lshoulder:
+    - 100024
+    - 400024
+    skeloten:
+    - 100026
+    - 400026
+    head:
+    - 100028
+    - 400028
+    - 13700000
+    leftleg:
+    - 100030
+    - 400030
+    - 13700002
+    rightleg:
+    - 100032
+    - 400032
+    - 13700004
+    rightarm:
+    - 100034
+    - 400034
+    - 13700006
+    leftarm:
+    - 100036
+    - 400036
+    - 13700008
+    binohead:
+    - 100038
+    - 400038
+    torso:
+    - 100040
+    - 400040
+    - 13700010
+    Binobody:
+    - 100042
+    - 400042
+    ikHandle5:
+    - 100044
+    - 400044
+    Rwrist:
+    - 100046
+    - 400046
+    head 1:
+    - 100048
+    - 400048
+    Relbow:
+    - 100050
+    - 400050
+    group:
+    - 100052
+    - 400052
+    pasted__group20:
+    - 100054
+    - 400054
+    headball:
+    - 100056
+    - 400056
+    //RootNode:
+    - 100058
+    - 400058
+    - 11100000
+    Rshoulder:
+    - 100060
+    - 400060
+    Lhip:
+    - 100062
+    - 400062
+    Lwrist:
+    - 100064
+    - 400064
+    ikHandle2:
+    - 100066
+    - 400066
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: torso
+    4300002: leftleg
+    4300004: rightleg
+    4300006: rightarm
+    4300008: leftarm
+    4300010: head
+    7400000: Take 001 //// bino@running 1

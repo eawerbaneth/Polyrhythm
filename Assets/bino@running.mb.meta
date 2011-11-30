@@ -21,6 +21,116 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+  nodeInfo:
+    Binobody:
+    - 100000
+    - 400000
+    //RootNode:
+    - 100002
+    - 400002
+    - 11100000
+    Relbow:
+    - 100004
+    - 400004
+    ikHandle2:
+    - 100006
+    - 400006
+    ikHandle3:
+    - 100008
+    - 400008
+    pasted__group20:
+    - 100010
+    - 400010
+    skeloten:
+    - 100012
+    - 400012
+    ikHandle5:
+    - 100014
+    - 400014
+    group:
+    - 100016
+    - 400016
+    ikHandle4:
+    - 100018
+    - 400018
+    head:
+    - 100020
+    - 400020
+    - 13700000
+    Lshoulder:
+    - 100022
+    - 400022
+    ikHandle1:
+    - 100024
+    - 400024
+    headarmsspine 1:
+    - 100026
+    - 400026
+    headarmsspine:
+    - 100028
+    - 400028
+    rightarm:
+    - 100030
+    - 400030
+    - 13700002
+    Lwrist:
+    - 100032
+    - 400032
+    Lelbow:
+    - 100034
+    - 400034
+    Rshoulder:
+    - 100036
+    - 400036
+    torso:
+    - 100038
+    - 400038
+    - 13700004
+    leftleg:
+    - 100040
+    - 400040
+    - 13700006
+    leftarm:
+    - 100042
+    - 400042
+    - 13700008
+    headarms:
+    - 100044
+    - 400044
+    rightleg:
+    - 100046
+    - 400046
+    - 13700010
+    Rwrist:
+    - 100048
+    - 400048
+    binohead:
+    - 100050
+    - 400050
+    Lankle:
+    - 100052
+    - 400052
+    Rknee:
+    - 100054
+    - 400054
+    Lhip:
+    - 100056
+    - 400056
+    head 1:
+    - 100058
+    - 400058
+    Rhip:
+    - 100060
+    - 400060
+    Rankle:
+    - 100062
+    - 400062
+    headball:
+    - 100064
+    - 400064
+    Lknee:
+    - 100066
+    - 400066
 AssetImporter:
   importerVersion: 1
   fileIDToRecycleName:
