@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 //red 2
 //yellow 4
@@ -16,8 +17,32 @@ public class player_class : MonoBehaviour {
 	public string color;
 	public float cooldown;
 	private CharacterController controller;
-	public Vector3 test;
+	public List <string> feet;
+	public GameObject player;
+	public GameObject bino;
+	
+	//textures	
+	public Texture red_tex ;
+	public Texture blue_tex ;
+	public Texture white_tex ;
+	public Texture yellow_tex ;
 
+	
+	public void apply_texture(){
+		GameObject []bodyparts = GameObject.FindGameObjectsWithTag("Player");
+		foreach(GameObject bodypart in bodyparts){
+			if(color == "none")
+				bodypart.renderer.material.mainTexture = white_tex;	
+			else if(color == "blue")
+				bodypart.renderer.material.mainTexture = blue_tex;	
+			else if(color == "red")
+				bodypart.renderer.material.mainTexture = red_tex;	
+			if(color == "yellow")
+				bodypart.renderer.material.mainTexture = yellow_tex;	
+				
+		}
+		
+	}
 	
 	public void receive_input(){
 		
@@ -33,18 +58,23 @@ public class player_class : MonoBehaviour {
 				change_lane(true);
 			else if (key == "red")
 				change_lane(false);
+			else if (key == "foot_pedal")
+				feet.Add(key);
 			//TODO: ADD ANIMATIONS FOR COLOR CHANGE
 			else if (key == "red_combo"){
 				color = "red";
 				cooldown = 3;
+				apply_texture();
 			}
 			else if (key == "blue_combo"){
 				color = "blue";
 				cooldown = 3;
+				apply_texture();
 			}
 			else if (key=="yellow_combo"){
 				color = "yellow";
 				cooldown = 3;
+				apply_texture();
 			}
 		}
 		
@@ -52,8 +82,10 @@ public class player_class : MonoBehaviour {
 		input_feed.empty_output();
 		
 		//reset the cooldown
-		if(cooldown == 0)
+		if(cooldown == 0){
 			color = "none";
+			apply_texture();
+		}
 		
 	}
 	
@@ -61,22 +93,16 @@ public class player_class : MonoBehaviour {
 	public void change_lane(bool direction){
 		//NEED TO ADD ANIMATIONS IN HERE
 		
-		//Vector3 move_coords = new Vector3(0, 0, 0);
 		Vector3 trans_coords = transform.forward;
-		test = trans_coords;
-		
-		//Vector3 trans_coords = new Vector3(transform.position.x,
-		//       transform.position.y, transform.position.z);
+		trans_coords.z = 0.15f;
 		
 		if(direction && lane < 2){
 			lane++;
-			//trans_coords.z += 1;
-			trans_coords = -trans_coords;
 			transform.Translate(trans_coords);
 		}
 		else if(!direction && lane > 0){
 			lane--;
-			//trans_coords.z -= 1;
+			trans_coords = -trans_coords;
 			transform.Translate(trans_coords);
 		}
 		
@@ -86,6 +112,21 @@ public class player_class : MonoBehaviour {
 		lane = 1;
 		color = "none";
 		cooldown = 0;
+		feet = new List<string>();
+		player = GameObject.Find("player_prefab");
+		
+		red_tex = Resources.Load("red") as Texture;
+		blue_tex = Resources.Load("blue") as Texture;
+		white_tex = Resources.Load("white") as Texture;
+		yellow_tex = Resources.Load("yellow") as Texture;
+		
+		bino = GameObject.Find("bino");
+		bino.animation.Stop();
+		bino.animation.Play("running");
+		bino.animation["running"].speed = 1.6f;
+		
+		
+		bino.animation.wrapMode = WrapMode.Loop;
 	}
 	
 	
