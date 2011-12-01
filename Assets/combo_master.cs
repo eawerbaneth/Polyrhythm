@@ -114,8 +114,8 @@ public class combo_master : MonoBehaviour {
 					//if we did, add the combo to our output queue
 					//clear the combo from our combination interpreter
 					output_queue.Enqueue("red_combo");
-					Debug.Log("Red: Count is: " + temp.Count + " i is: " + i);
-					temp.RemoveRange(i, i+5);
+					Debug.Log("Red: Count is: " + temp.Count + " i is: " + i + "offset is: " + offset);
+					temp.RemoveRange(i, offset);
 					offset = 0;
 					break;
 				}
@@ -141,7 +141,7 @@ public class combo_master : MonoBehaviour {
 					output_queue.Enqueue("blue_combo");
 					//clear the combo from our combination interpreter
 					Debug.Log("Blue: Count is: " + temp.Count + " i is: " + i);
-					temp.RemoveRange(i, i+5);
+					temp.RemoveRange(i, offset);
 					offset = 0;
 					break;
 				}
@@ -168,7 +168,7 @@ public class combo_master : MonoBehaviour {
 					output_queue.Enqueue("yellow_combo");
 					//clear the combo from our combination interpreter
 					Debug.Log("Yellow: Count is: " + temp.Count + " i is: " + i);
-					temp.RemoveRange(i, i+2);
+					temp.RemoveRange(i, offset);
 					offset = 0;
 					break;
 				}
