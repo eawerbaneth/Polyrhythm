@@ -30,6 +30,47 @@ public class player_class : MonoBehaviour {
 	public Texture white_tex ;
 	public Texture yellow_tex ;
 	
+	//sliding around stuff
+	private bool is_tweening;
+	private float remaining_tween_z;
+	
+	private void tweening(){
+		Vector3 trans_coords = transform.forward;
+		//we are moving right
+		if(remaining_tween_z > 0){
+			trans_coords.z = 0.15f * Time.deltaTime * 1.8f;
+			if(trans_coords.z > remaining_tween_z)
+				trans_coords.z = remaining_tween_z;
+		}
+		//we are moving left
+		else{
+			trans_coords.z = -0.15f * Time.deltaTime * 1.8f;
+			if(trans_coords.z < remaining_tween_z)
+				trans_coords.z = remaining_tween_z;
+		}
+		
+		transform.Translate(trans_coords);
+		remaining_tween_z -= trans_coords.z;
+		
+	}
+	
+		
+	//change lanes: true is up, false is down
+	public void change_lane(bool direction){
+		
+		//Vector3 trans_coords = transform.forward;
+		//trans_coords.z = 0.15f;
+		
+		if(direction && lane < 2){
+			lane++;
+			remaining_tween_z += 0.15f;
+		}
+		else if(!direction && lane > 0){
+			lane--;
+			remaining_tween_z -= 0.15f;
+		}
+		
+	}
 	
 	
 	public void animation_update(){
@@ -102,24 +143,6 @@ public class player_class : MonoBehaviour {
 		
 	}
 	
-	//change lanes: true is up, false is down
-	public void change_lane(bool direction){
-		
-		Vector3 trans_coords = transform.forward;
-		trans_coords.z = 0.15f;
-		
-		if(direction && lane < 2){
-			lane++;
-			transform.Translate(trans_coords);
-		}
-		else if(!direction && lane > 0){
-			lane--;
-			trans_coords = -trans_coords;
-			transform.Translate(trans_coords);
-		}
-		
-	}
-	
 	void Awake(){
 		lane = 1;
 		color = "none";
@@ -138,6 +161,8 @@ public class player_class : MonoBehaviour {
 		bino.animation["running"].speed = 1.6f;
 		
 		bino.animation.wrapMode = WrapMode.Loop;
+		
+		remaining_tween_z = 0;
 	}
 	
 	
@@ -149,5 +174,7 @@ public class player_class : MonoBehaviour {
 	void Update () {
 		receive_input();
 		animation_update();
+		if(remaining_tween_z != 0)
+			tweening();
 	}
 }
