@@ -92,6 +92,7 @@ public class combo_master : MonoBehaviour {
 	public void parse_combos(){
 		//get an augmented version of list to check for combos with
 		List <key_pair> temp = clean_list();
+		int temp_count = temp.Count;
 		
 		//we have out updated list, now check for combinations
 		if(temp.Count >= 6){
@@ -111,13 +112,12 @@ public class combo_master : MonoBehaviour {
 				//check to see if we had a full combo
 				if(offset!=0){
 					//if we did, add the combo to our output queue
-					output_queue.Enqueue("red_combo");
 					//clear the combo from our combination interpreter
-					Debug.Log("Red: Count is: " + temp.Count + " i is: " + i);
-					temp.RemoveRange(i, i+5);
+					output_queue.Enqueue("red_combo");
+					Debug.Log("Red: Count is: " + temp.Count + " i is: " + i + "offset is: " + offset);
+					temp.RemoveRange(i, offset);
 					offset = 0;
 					break;
-					
 				}
 			}
 		}
@@ -141,7 +141,7 @@ public class combo_master : MonoBehaviour {
 					output_queue.Enqueue("blue_combo");
 					//clear the combo from our combination interpreter
 					Debug.Log("Blue: Count is: " + temp.Count + " i is: " + i);
-					temp.RemoveRange(i, i+5);
+					temp.RemoveRange(i, offset);
 					offset = 0;
 					break;
 				}
@@ -168,13 +168,16 @@ public class combo_master : MonoBehaviour {
 					output_queue.Enqueue("yellow_combo");
 					//clear the combo from our combination interpreter
 					Debug.Log("Yellow: Count is: " + temp.Count + " i is: " + i);
-					temp.RemoveRange(i, i+2);
+					temp.RemoveRange(i, offset);
 					offset = 0;
 					break;
 				}
 			}
 			
 		}
+		
+		if(temp.Count < temp_count)
+			Debug.Log("temp count changed: " + temp_count + "->" + temp.Count);
 		
 		combo_interpreter = temp;
 		

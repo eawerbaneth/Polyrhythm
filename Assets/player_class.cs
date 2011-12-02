@@ -20,13 +20,70 @@ public class player_class : MonoBehaviour {
 	public List <string> feet;
 	public GameObject player;
 	public GameObject bino;
+	public float reflected_bps;
+	
+	private GUIScript gui_instance;
 	
 	//textures	
 	public Texture red_tex ;
 	public Texture blue_tex ;
 	public Texture white_tex ;
 	public Texture yellow_tex ;
-
+	
+	//sliding around stuff
+	private bool is_tweening;
+	private float remaining_tween_z;
+	
+	private void tweening(){
+		Vector3 trans_coords = transform.forward;
+		//we are moving right
+		if(remaining_tween_z > 0){
+			trans_coords.z = 0.15f * Time.deltaTime * 1.8f;
+			if(trans_coords.z > remaining_tween_z)
+				trans_coords.z = remaining_tween_z;
+		}
+		//we are moving left
+		else{
+			trans_coords.z = -0.15f * Time.deltaTime * 1.8f;
+			if(trans_coords.z < remaining_tween_z)
+				trans_coords.z = remaining_tween_z;
+		}
+		
+		transform.Translate(trans_coords);
+		remaining_tween_z -= trans_coords.z;
+		
+	}
+	
+		
+	//change lanes: true is up, false is down
+	public void change_lane(bool direction){
+		
+		//Vector3 trans_coords = transform.forward;
+		//trans_coords.z = 0.15f;
+		
+		if(direction && lane < 2){
+			lane++;
+			remaining_tween_z += 0.15f;
+		}
+		else if(!direction && lane > 0){
+			lane--;
+			remaining_tween_z -= 0.15f;
+		}
+		
+	}
+	
+	
+	public void animation_update(){
+		GameObject guibar = GameObject.Find("GUI - Bar");
+		
+		gui_instance = guibar.GetComponent<GUIScript>();
+		
+		float bps = gui_instance.beats_per_second;
+		reflected_bps = bps;
+		
+		bino.animation["running"].speed = 1.6f * bps;
+		
+	}
 	
 	public void apply_texture(){
 		GameObject []bodyparts = GameObject.FindGameObjectsWithTag("Player");
@@ -38,10 +95,8 @@ public class player_class : MonoBehaviour {
 			else if(color == "red")
 				bodypart.renderer.material.mainTexture = red_tex;	
 			if(color == "yellow")
-				bodypart.renderer.material.mainTexture = yellow_tex;	
-				
+				bodypart.renderer.material.mainTexture = yellow_tex;			
 		}
-		
 	}
 	
 	public void receive_input(){
@@ -60,7 +115,6 @@ public class player_class : MonoBehaviour {
 				change_lane(false);
 			else if (key == "foot_pedal")
 				feet.Add(key);
-			//TODO: ADD ANIMATIONS FOR COLOR CHANGE
 			else if (key == "red_combo"){
 				color = "red";
 				cooldown = 3;
@@ -89,25 +143,6 @@ public class player_class : MonoBehaviour {
 		
 	}
 	
-	//change lanes: true is up, false is down
-	public void change_lane(bool direction){
-		//NEED TO ADD ANIMATIONS IN HERE
-		
-		Vector3 trans_coords = transform.forward;
-		trans_coords.z = 0.15f;
-		
-		if(direction && lane < 2){
-			lane++;
-			transform.Translate(trans_coords);
-		}
-		else if(!direction && lane > 0){
-			lane--;
-			trans_coords = -trans_coords;
-			transform.Translate(trans_coords);
-		}
-		
-	}
-	
 	void Awake(){
 		lane = 1;
 		color = "none";
@@ -125,8 +160,9 @@ public class player_class : MonoBehaviour {
 		bino.animation.Play("running");
 		bino.animation["running"].speed = 1.6f;
 		
-		
 		bino.animation.wrapMode = WrapMode.Loop;
+		
+		remaining_tween_z = 0;
 	}
 	
 	
@@ -137,7 +173,8 @@ public class player_class : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		receive_input();
-		
-	
+		animation_update();
+		if(remaining_tween_z != 0)
+			tweening();
 	}
 }
