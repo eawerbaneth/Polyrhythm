@@ -20,13 +20,29 @@ public class player_class : MonoBehaviour {
 	public List <string> feet;
 	public GameObject player;
 	public GameObject bino;
+	public float reflected_bps;
+	
+	private GUIScript gui_instance;
 	
 	//textures	
 	public Texture red_tex ;
 	public Texture blue_tex ;
 	public Texture white_tex ;
 	public Texture yellow_tex ;
-
+	
+	
+	
+	public void animation_update(){
+		GameObject guibar = GameObject.Find("GUI - Bar");
+		
+		gui_instance = guibar.GetComponent<GUIScript>();
+		
+		float bps = gui_instance.beats_per_second;
+		reflected_bps = bps;
+		
+		bino.animation["running"].speed = 1.6f * bps;
+		
+	}
 	
 	public void apply_texture(){
 		GameObject []bodyparts = GameObject.FindGameObjectsWithTag("Player");
@@ -38,10 +54,8 @@ public class player_class : MonoBehaviour {
 			else if(color == "red")
 				bodypart.renderer.material.mainTexture = red_tex;	
 			if(color == "yellow")
-				bodypart.renderer.material.mainTexture = yellow_tex;	
-				
+				bodypart.renderer.material.mainTexture = yellow_tex;			
 		}
-		
 	}
 	
 	public void receive_input(){
@@ -60,7 +74,6 @@ public class player_class : MonoBehaviour {
 				change_lane(false);
 			else if (key == "foot_pedal")
 				feet.Add(key);
-			//TODO: ADD ANIMATIONS FOR COLOR CHANGE
 			else if (key == "red_combo"){
 				color = "red";
 				cooldown = 3;
@@ -91,7 +104,6 @@ public class player_class : MonoBehaviour {
 	
 	//change lanes: true is up, false is down
 	public void change_lane(bool direction){
-		//NEED TO ADD ANIMATIONS IN HERE
 		
 		Vector3 trans_coords = transform.forward;
 		trans_coords.z = 0.15f;
@@ -125,7 +137,6 @@ public class player_class : MonoBehaviour {
 		bino.animation.Play("running");
 		bino.animation["running"].speed = 1.6f;
 		
-		
 		bino.animation.wrapMode = WrapMode.Loop;
 	}
 	
@@ -137,7 +148,6 @@ public class player_class : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		receive_input();
-		
-	
+		animation_update();
 	}
 }
