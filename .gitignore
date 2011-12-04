@@ -19,3 +19,4 @@ Temp
 *.pidb
 *.sln
 build
+*.meta
