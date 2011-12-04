@@ -80,7 +80,7 @@ public class GUIScript : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown("space")){
+        if (Input.GetButtonDown("foot_pedal")){
             this.value = this.value + this.space_gain;
         }
         this.value = this.value - ((Time.deltaTime * this.space_gain) * beats_per_second);            
@@ -100,7 +100,6 @@ public class GUIScript : MonoBehaviour {
     
     // OnGUI is called multiple times per frame (about 4 times)
     void OnGUI() {
-    
         //if(Time.time < this.glimmer_start_time + this.glimmer_active_time)
         //    GUI.DrawTexture(glimmerRect, glimmerTexture);
         

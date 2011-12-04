@@ -16,7 +16,8 @@ public class combo_master : MonoBehaviour {
 	private InputManager input;
 	
 	private static string[] red_combo = {"blue", "combo", "blue", "combo", "blue", "combo"};
-	private static string[] blue_combo = {"blue", "blue", "blue", "blue", "blue", "blue"};
+	private static string[] blue_combo = {"yellow", "yellow", "yellow", "yellow", "yellow", "yellow"};
+	//private static string[] blue_combo = {"blue", "blue", "blue", "blue", "blue", "blue"};
 	private static string[] yellow_combo = {"combo", "combo", "combo"};
 	
 	public static combo_master get{
@@ -185,7 +186,7 @@ public class combo_master : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		simul_timer = 0;
+		simul_timer = 0.05f;
 		combo_timer = 7;
 		combo_count = 0;
 		
