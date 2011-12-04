@@ -7,8 +7,8 @@ public class redPaint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject temp = GameObject.Find("player_prefab");
-		thePlayer = temp.GetComponent<player_class>;
+		//GameObject temp = GameObject.Find("player_prefab");
+		//thePlayer = temp.GetComponent<player_class>();
 	}
 	
 	// Update is called once per frame
@@ -22,10 +22,10 @@ public class redPaint : MonoBehaviour {
 			
 		}
 		
-		if(thePlayer.color == "red" && )
-		{
+		//if(thePlayer.color == "red" && )
+		//{
 			
-		}
+		//}
 
 		
 	}
