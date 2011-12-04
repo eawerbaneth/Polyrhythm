@@ -186,7 +186,7 @@ public class combo_master : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		simul_timer = 0;
+		simul_timer = 0.05f;
 		combo_timer = 7;
 		combo_count = 0;
 		
