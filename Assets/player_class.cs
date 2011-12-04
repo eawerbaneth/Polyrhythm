@@ -97,6 +97,8 @@ public class player_class : MonoBehaviour {
 			if(color == "yellow")
 				bodypart.renderer.material.mainTexture = yellow_tex;			
 		}
+		if(color != "none")
+			bino.animation.Play("powerup");
 	}
 	
 	public void receive_input(){
@@ -167,7 +169,8 @@ public class player_class : MonoBehaviour {
 	
 	
 	// Use this for initialization
-	void Start () {		
+	void Start () {
+		//Debug.Log(name);
 	}
 	
 	// Update is called once per frame
