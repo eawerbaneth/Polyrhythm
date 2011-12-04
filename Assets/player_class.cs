@@ -81,7 +81,7 @@ public class player_class : MonoBehaviour {
 		float bps = gui_instance.beats_per_second;
 		reflected_bps = bps;
 		
-		bino.animation["running"].speed = 1.6f * bps;
+		// bino.animation["running"].speed = 1.6f * bps;   RUNNING CODE COMMENTED OUT
 		
 	}
 	
@@ -157,8 +157,8 @@ public class player_class : MonoBehaviour {
 		
 		bino = GameObject.Find("bino");
 		bino.animation.Stop();
-		bino.animation.Play("running");
-		bino.animation["running"].speed = 1.6f;
+		// bino.animation.Play("running");  RUNNING CODE COMMENTED OUT
+		// bino.animation["running"].speed = 1.6f;   RUNNING CODE COMMENTED OUT
 		
 		bino.animation.wrapMode = WrapMode.Loop;
 		

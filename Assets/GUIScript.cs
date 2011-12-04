@@ -82,9 +82,7 @@ public class GUIScript : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown("space")){
             this.value = this.value + this.space_gain;
-            //this.beats_per_second += 0.1f;
         }
-            
         this.value = this.value - ((Time.deltaTime * this.space_gain) * beats_per_second);            
         this.barRect.width = barWidth * (this.value / 100) - this.capTexture.width + 1;
         this.capRect.x = this.barRect.width - 1;

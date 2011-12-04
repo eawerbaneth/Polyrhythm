@@ -12,4 +12,11 @@ public class NewBehaviourScript : MonoBehaviour {
 	void Update () {
 	
 	}
+    
+    void OnGUI () {
+        if (GUI.Button (new Rect (20,70,80,20), "Next Level")) {
+            Application.LoadLevel("beth_scene_mammoth"); 
+
+        }
+    }
 }
