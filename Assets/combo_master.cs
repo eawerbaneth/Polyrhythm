@@ -15,10 +15,22 @@ public class combo_master : MonoBehaviour {
 	private float simul_timer;
 	private InputManager input;
 	
+	
+	//ADVANCED COMBOS
+	private static string[] red_advanced = {"blue", "blue", "blue", "combo", "blue", "blue", "blue", "combo"};
+	private static string[] blue_advanced = {"yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow", "yellow"};
+	private static string[] yellow_advanced = {"combo", "combo", "blue", "yellow", "combo"};
+	
+	//REGULAR COMBOS
 	private static string[] red_combo = {"blue", "combo", "blue", "combo", "blue", "combo"};
 	private static string[] blue_combo = {"yellow", "yellow", "yellow", "yellow", "yellow", "yellow"};
 	//private static string[] blue_combo = {"blue", "blue", "blue", "blue", "blue", "blue"};
-	private static string[] yellow_combo = {"combo", "combo", "combo"};
+	private static string[] yellow_combo = {"combo", "combo", "combo", "combo"};
+	
+	//EASY COMBOS
+	private static string[] red_easy = {"blue", "yellow", "blue"};
+	private static string[] blue_easy = {"yellow", "yellow", "yellow"};
+	private static string[] yellow_easy = {"combo", "combo", "combo"};
 	
 	public static combo_master get{
 		get{

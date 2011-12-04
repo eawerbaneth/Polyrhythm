@@ -98,7 +98,7 @@ public class player_class : MonoBehaviour {
 				bodypart.renderer.material.mainTexture = yellow_tex;			
 		}
 		if(color != "none")
-			bino.animation.Play("powerup");
+			bino.animation.CrossFade("powerup");
 	}
 	
 	public void receive_input(){
@@ -163,6 +163,8 @@ public class player_class : MonoBehaviour {
 		bino.animation["running"].speed = 1.6f;
 		
 		bino.animation.wrapMode = WrapMode.Loop;
+		bino.animation["powerup"].wrapMode = WrapMode.Once;
+		bino.animation["powerup"].layer = 1;
 		
 		remaining_tween_z = 0;
 	}
@@ -179,5 +181,6 @@ public class player_class : MonoBehaviour {
 		animation_update();
 		if(remaining_tween_z != 0)
 			tweening();
+		
 	}
 }
