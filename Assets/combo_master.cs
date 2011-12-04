@@ -16,7 +16,8 @@ public class combo_master : MonoBehaviour {
 	private InputManager input;
 	
 	private static string[] red_combo = {"blue", "combo", "blue", "combo", "blue", "combo"};
-	private static string[] blue_combo = {"blue", "blue", "blue", "blue", "blue", "blue"};
+	private static string[] blue_combo = {"yellow", "yellow", "yellow", "yellow", "yellow", "yellow"};
+	//private static string[] blue_combo = {"blue", "blue", "blue", "blue", "blue", "blue"};
 	private static string[] yellow_combo = {"combo", "combo", "combo"};
 	
 	public static combo_master get{
