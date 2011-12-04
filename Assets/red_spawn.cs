@@ -16,7 +16,7 @@ public class red_spawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*
 		if(Random.value < spawnChance && rpPrefab)
 		{
 			x = Random.Range(0,100);
@@ -52,6 +52,6 @@ public class red_spawn : MonoBehaviour {
 				rp.transform.parent = transform;
 			}
 		}
-		
+		*/
 	}
 }

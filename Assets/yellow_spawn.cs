@@ -16,7 +16,7 @@ public class yellow_spawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*
 		if(Random.value < spawnChance && ypPrefab)
 		{
 			x = Random.Range(0,100);
@@ -52,6 +52,6 @@ public class yellow_spawn : MonoBehaviour {
 				yp.transform.parent = transform;
 			}
 		}
-		
+		*/
 	}
 }

@@ -25,10 +25,10 @@ public class player_class : MonoBehaviour {
 	private GUIScript gui_instance;
 	
 	//textures	
-	public Texture red_tex ;
-	public Texture blue_tex ;
-	public Texture white_tex ;
-	public Texture yellow_tex ;
+	private Texture red_tex ;
+	private Texture blue_tex ;
+	private Texture white_tex ;
+	private Texture yellow_tex ;
 	
 	//sliding around stuff
 	private bool is_tweening;
