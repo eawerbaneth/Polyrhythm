@@ -20,7 +20,7 @@ public class yellow_spawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*
 		if(Random.value < spawnChance && ypPrefab)
 		{
 			x = Random.Range(0,100);
@@ -62,8 +62,12 @@ public class yellow_spawn : MonoBehaviour {
 				lane = 3;
 			}
 		}
+<<<<<<< HEAD
 		
 		
 		
+=======
+		*/
+>>>>>>> 0a6da2bf3a4e0eca0386e1dec8eb3c915ba3e8e0
 	}
 }

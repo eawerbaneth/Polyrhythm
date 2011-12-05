@@ -25,10 +25,10 @@ public class player_class : MonoBehaviour {
 	private GUIScript gui_instance;
 	
 	//textures	
-	public Texture red_tex ;
-	public Texture blue_tex ;
-	public Texture white_tex ;
-	public Texture yellow_tex ;
+	private Texture red_tex ;
+	private Texture blue_tex ;
+	private Texture white_tex ;
+	private Texture yellow_tex ;
 	
 	//sliding around stuff
 	private bool is_tweening;
@@ -97,6 +97,8 @@ public class player_class : MonoBehaviour {
 			if(color == "yellow")
 				bodypart.renderer.material.mainTexture = yellow_tex;			
 		}
+		if(color != "none")
+			bino.animation.CrossFade("powerup");
 	}
 	
 	public void receive_input(){
@@ -161,13 +163,16 @@ public class player_class : MonoBehaviour {
 		bino.animation["running"].speed = 1.6f;
 		
 		bino.animation.wrapMode = WrapMode.Loop;
+		bino.animation["powerup"].wrapMode = WrapMode.Once;
+		bino.animation["powerup"].layer = 1;
 		
 		remaining_tween_z = 0;
 	}
 	
 	
 	// Use this for initialization
-	void Start () {		
+	void Start () {
+		//Debug.Log(name);
 	}
 	
 	// Update is called once per frame
@@ -176,5 +181,6 @@ public class player_class : MonoBehaviour {
 		animation_update();
 		if(remaining_tween_z != 0)
 			tweening();
+		
 	}
 }

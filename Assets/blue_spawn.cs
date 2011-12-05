@@ -16,7 +16,7 @@ public class blue_spawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*
 		if(Random.value < spawnChance && bpPrefab)
 		{
 			x = Random.Range(0,100);
@@ -52,6 +52,6 @@ public class blue_spawn : MonoBehaviour {
 				bp.transform.parent = transform;
 			}
 		}
-		
+		*/
 	}
 }
